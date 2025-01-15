@@ -1,0 +1,6 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dnhbhyk8gn2sa"]
+
+[ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_xdutt"]
+
+[resource]
+default_font = ExtResource("1_xdutt")

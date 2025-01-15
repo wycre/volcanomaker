@@ -1,0 +1,135 @@
+[gd_scene load_steps=10 format=3 uid="uid://b7pcprka6u8cd"]
+
+[ext_resource type="Texture2D" uid="uid://c63rm1ai832eb" path="res://Assets/Volcano.svg" id="1_03k7c"]
+[ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_81cud"]
+[ext_resource type="Script" path="res://Scripts/main.gd" id="1_yyjb8"]
+[ext_resource type="Theme" uid="uid://dnhbhyk8gn2sa" path="res://Assets/MainTheme.tres" id="4_ag2wq"]
+[ext_resource type="ButtonGroup" uid="uid://cedg0umu6dmep" path="res://LavaTypeGroup.tres" id="5_ssoie"]
+[ext_resource type="Script" path="res://Scripts/progress_bar.gd" id="6_j3p58"]
+[ext_resource type="Texture2D" uid="uid://cxxu6vsaaawbd" path="res://Assets/Town.png" id="6_ni75q"]
+[ext_resource type="Texture2D" uid="uid://c23txl0khgj6s" path="res://Assets/Newspaper Background.png" id="9_ho3an"]
+[ext_resource type="Script" path="res://Scripts/newspaper_text.gd" id="10_q8k4m"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yyjb8")
+
+[node name="Title" type="Label" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 40.0
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("1_81cud")
+text = "Volcano Maker"
+horizontal_alignment = 1
+
+[node name="Volcano" type="Sprite2D" parent="."]
+position = Vector2(496, 440)
+texture = ExtResource("1_03k7c")
+
+[node name="Town" type="Sprite2D" parent="."]
+position = Vector2(992, 392)
+texture = ExtResource("6_ni75q")
+
+[node name="EruptionOptionsLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_top = 40.0
+offset_right = 184.0
+offset_bottom = 224.0
+bbcode_enabled = true
+text = "This is a _____ Volcano
+
+    
+    "
+
+[node name="VolcanoContentButtons" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_top = 60.0
+offset_right = 40.0
+offset_bottom = 112.0
+
+[node name="LavaCheckBox" type="CheckBox" parent="VolcanoContentButtons"]
+layout_mode = 2
+theme = ExtResource("4_ag2wq")
+button_group = ExtResource("5_ssoie")
+text = "Lava"
+
+[node name="ChocoCheckBox" type="CheckBox" parent="VolcanoContentButtons"]
+layout_mode = 2
+theme = ExtResource("4_ag2wq")
+button_group = ExtResource("5_ssoie")
+text = "Chocolate Syrup"
+
+[node name="Molasses" type="CheckBox" parent="VolcanoContentButtons"]
+layout_mode = 2
+theme = ExtResource("4_ag2wq")
+button_group = ExtResource("5_ssoie")
+text = "Molasses "
+
+[node name="CallToAction" type="Label" parent="."]
+visible = false
+offset_left = 448.0
+offset_top = 544.0
+offset_right = 704.0
+offset_bottom = 592.0
+theme_type_variation = &"HeaderLarge"
+theme_override_fonts/font = ExtResource("1_81cud")
+text = "Press Space!"
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 368.0
+offset_top = 248.0
+offset_right = 400.0
+offset_bottom = 624.0
+fill_mode = 3
+show_percentage = false
+script = ExtResource("6_j3p58")
+
+[node name="Reservior" type="Panel" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 608.0
+offset_right = 424.0
+offset_bottom = 640.0
+
+[node name="NewspaperBackground" type="Sprite2D" parent="." groups=["Newspaper"]]
+visible = false
+position = Vector2(576, 312)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("9_ho3an")
+
+[node name="NewspaperText" type="RichTextLabel" parent="." groups=["Newspaper"]]
+visible = false
+layout_mode = 2
+offset_left = 320.0
+offset_top = 112.0
+offset_right = 832.0
+offset_bottom = 568.0
+theme_override_colors/default_color = Color(0, 0, 0, 1)
+bbcode_enabled = true
+text = "Lorem ipsum odor amet, consectetuer adipiscing elit. Inceptos leo orci pretium pulvinar ante odio ante class. Interdum natoque ridiculus rhoncus tincidunt magnis euismod massa. Tempus varius laoreet sodales tempor lectus; dictum hac. Risus sociosqu ultrices vehicula ullamcorper nec adipiscing aptent? Aliquet tempor felis consequat posuere sociosqu torquent mollis lobortis. Sagittis posuere diam felis quam ipsum duis pulvinar. Erat fringilla sit maecenas bibendum molestie curae tristique torquent.
+
+Leo duis fringilla quam dis bibendum iaculis, dapibus magna curabitur. Mattis nullam magna neque venenatis rutrum faucibus hendrerit sit inceptos. Dignissim ipsum enim vulputate vehicula ad volutpat. Semper potenti commodo odio sociosqu blandit ultrices vehicula. Id dictum nostra nec iaculis; efficitur lorem purus. Vulputate a sagittis ultricies metus suscipit finibus nibh feugiat tempor. Venenatis est risus gravida; elementum aptent vivamus vestibulum finibus egestas. Aenean turpis imperdiet aenean at taciti convallis."
+script = ExtResource("10_q8k4m")
+
+[node name="ResetButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 520.0
+offset_top = 520.0
+offset_right = 632.0
+offset_bottom = 552.0
+text = "Reset"
+
+[connection signal="toggled" from="VolcanoContentButtons/LavaCheckBox" to="." method="_on_radio_toggled" binds= ["LavaCheckBox", "Lava"]]
+[connection signal="toggled" from="VolcanoContentButtons/ChocoCheckBox" to="." method="_on_radio_toggled" binds= ["ChocoCheckBox", "Chocolate Syrup"]]
+[connection signal="toggled" from="VolcanoContentButtons/Molasses" to="." method="_on_radio_toggled" binds= ["Molasses", "Molasses"]]
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
