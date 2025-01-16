@@ -37,7 +37,7 @@ func prepare_erupt():
 	if not erupted:
 		erupted = true
 		# Change game state
-		var town = get_node("../TownArea")
+		var town = get_node("../../TownArea")
 		town.timer_active = false
 		
 		
@@ -60,9 +60,9 @@ func erupt():
 	$RumblePlayer.stop()
 	
 	# Display newspaper
-	var newspaper_background = get_node("../NewspaperBackground")
-	var newspaper_text = get_node("../NewspaperText")
-	var reset_button = get_node("../ResetButton")
+	var newspaper_background = get_node("../../NewspaperBackground")
+	var newspaper_text = get_node("../../NewspaperText")
+	var reset_button = get_node("../../ResetButton")
 	newspaper_background.visible = true
 	newspaper_text.visible = true
 	reset_button.visible = true

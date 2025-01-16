@@ -9,8 +9,9 @@ func _ready() -> void:
 	# Bind Fluid choice checkboxes
 	var i = 0
 	for object in $VolcanoContentButtons.get_children():
-		object.toggled.connect(_on_radio_toggled.bind(i))
-		i += 1
+		if object is CheckBox:
+			object.toggled.connect(_on_radio_toggled.bind(i))
+			i += 1
 
 
 
@@ -22,8 +23,8 @@ func _process(delta: float) -> void:
 func _on_radio_toggled(button_pressed, fluid_type: Fluids):
 	if button_pressed:
 		# Set Fluid Channel Colors
-		$FluidTube.change_color(fluid_type)
-		$FluidReservior.change_color(fluid_type)
+		$VolcanoGroup/FluidTube.change_color(fluid_type)
+		$VolcanoGroup/FluidReservior.change_color(fluid_type)
 		
 		get_node("NewspaperText")._change_text(name)  # TODO Newspaper Text Engine
 
@@ -34,14 +35,15 @@ func _on_reset_button_pressed() -> void:
 	$NewspaperText.visible = false
 	$ResetButton.visible = false
 	
-	$FluidTube.change_color(Fluids.LAVA)
-	$FluidReservior.change_color(Fluids.LAVA)
+	$VolcanoGroup/FluidTube.change_color(Fluids.LAVA)
+	$VolcanoGroup/FluidReservior.change_color(Fluids.LAVA)
 	
-	$FluidTube.erupted = false
+	$VolcanoGroup/FluidTube.erupted = false
 	
 	for button in $VolcanoContentButtons.get_children():
-		if button.button_pressed == true:
-			button.button_pressed = false
+		if button is CheckBox:
+			if button.button_pressed == true:
+				button.button_pressed = false
 	$VolcanoContentButtons/LavaCheckBox.button_pressed = true
 	
 	# Restart Population Growth
