@@ -37,10 +37,16 @@ func _on_reset_button_pressed() -> void:
 	$FluidTube.change_color(Fluids.LAVA)
 	$FluidReservior.change_color(Fluids.LAVA)
 	
+	$FluidTube.erupted = false
+	
 	for button in $VolcanoContentButtons.get_children():
 		if button.button_pressed == true:
 			button.button_pressed = false
 	$VolcanoContentButtons/LavaCheckBox.button_pressed = true
+	
+	# Restart Population Growth
+	$TownArea.reset_pop()
+	$TownArea.timer_active = true
 	
 
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7pcprka6u8cd"]
+[gd_scene load_steps=13 format=3 uid="uid://b7pcprka6u8cd"]
 
 [ext_resource type="Texture2D" uid="uid://c63rm1ai832eb" path="res://Assets/Volcano.svg" id="1_03k7c"]
 [ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_81cud"]
@@ -6,9 +6,11 @@
 [ext_resource type="Theme" uid="uid://dnhbhyk8gn2sa" path="res://Assets/MainTheme.tres" id="4_ag2wq"]
 [ext_resource type="ButtonGroup" uid="uid://cedg0umu6dmep" path="res://LavaTypeGroup.tres" id="5_ssoie"]
 [ext_resource type="Script" path="res://Scripts/FluidTube.gd" id="6_j3p58"]
-[ext_resource type="Texture2D" uid="uid://cxxu6vsaaawbd" path="res://Assets/Town.png" id="6_ni75q"]
+[ext_resource type="AudioStream" uid="uid://dvda1c530727j" path="res://Assets/Audio/earth-rumble.mp3" id="7_pqi0u"]
+[ext_resource type="AudioStream" uid="uid://etfhdh3ylg5j" path="res://Assets/Audio/distant-explosion.mp3" id="8_7wafm"]
 [ext_resource type="Script" path="res://Scripts/FluidReservior.gd" id="8_jewuj"]
 [ext_resource type="Texture2D" uid="uid://c23txl0khgj6s" path="res://Assets/Newspaper Background.png" id="9_ho3an"]
+[ext_resource type="Script" path="res://TownController.gd" id="10_6h8bf"]
 [ext_resource type="Script" path="res://Scripts/newspaper_text.gd" id="10_q8k4m"]
 
 [node name="Control" type="Control"]
@@ -32,10 +34,6 @@ horizontal_alignment = 1
 [node name="Volcano" type="Sprite2D" parent="."]
 position = Vector2(496, 440)
 texture = ExtResource("1_03k7c")
-
-[node name="Town" type="Sprite2D" parent="."]
-position = Vector2(992, 392)
-texture = ExtResource("6_ni75q")
 
 [node name="EruptionOptionsLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
@@ -105,6 +103,12 @@ fill_mode = 3
 show_percentage = false
 script = ExtResource("6_j3p58")
 
+[node name="RumblePlayer" type="AudioStreamPlayer" parent="FluidTube"]
+stream = ExtResource("7_pqi0u")
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="FluidTube"]
+stream = ExtResource("8_7wafm")
+
 [node name="FluidReservior" type="Panel" parent="." groups=["FluidChannel"]]
 layout_mode = 0
 offset_left = 344.0
@@ -141,5 +145,33 @@ offset_top = 520.0
 offset_right = 632.0
 offset_bottom = 552.0
 text = "Reset"
+
+[node name="TownArea" type="Control" parent="."]
+anchors_preset = 0
+offset_left = 680.0
+offset_top = 128.0
+offset_right = 1152.0
+offset_bottom = 648.0
+script = ExtResource("10_6h8bf")
+
+[node name="PopLabel" type="Label" parent="TownArea"]
+layout_mode = 2
+offset_left = 32.0
+offset_top = 8.0
+offset_right = 156.0
+offset_bottom = 31.0
+theme = ExtResource("4_ag2wq")
+theme_type_variation = &"HeaderLarge"
+text = "Town Population: "
+
+[node name="PopCount" type="Label" parent="TownArea"]
+layout_mode = 0
+offset_left = 248.0
+offset_top = 8.0
+offset_right = 314.0
+offset_bottom = 44.0
+theme = ExtResource("4_ag2wq")
+theme_type_variation = &"HeaderLarge"
+text = "1"
 
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
