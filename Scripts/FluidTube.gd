@@ -45,6 +45,7 @@ func prepare_erupt():
 		# Play Eruption Animation
 		$RumblePlayer.play()
 		$ExplosionPlayer.play()
+		get_node("../../VolcanoAnimator").play("camera_shake")
 		
 		# Start timer
 		if not eruption_timer:
@@ -66,6 +67,7 @@ func erupt():
 	newspaper_background.visible = true
 	newspaper_text.visible = true
 	reset_button.visible = true
+	get_node("../../VolcanoAnimator").stop()
 	
 	# Delete the dimer
 	eruption_timer.queue_free()

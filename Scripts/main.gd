@@ -5,7 +5,6 @@ const Fluids = preload("res://Scripts/Fluids.gd").Fluids
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	
 	# Bind Fluid choice checkboxes
 	var i = 0
 	for object in $VolcanoContentButtons.get_children():
