@@ -1,12 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://b7pcprka6u8cd"]
+[gd_scene load_steps=11 format=3 uid="uid://b7pcprka6u8cd"]
 
 [ext_resource type="Texture2D" uid="uid://c63rm1ai832eb" path="res://Assets/Volcano.svg" id="1_03k7c"]
 [ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_81cud"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_yyjb8"]
 [ext_resource type="Theme" uid="uid://dnhbhyk8gn2sa" path="res://Assets/MainTheme.tres" id="4_ag2wq"]
 [ext_resource type="ButtonGroup" uid="uid://cedg0umu6dmep" path="res://LavaTypeGroup.tres" id="5_ssoie"]
-[ext_resource type="Script" path="res://Scripts/progress_bar.gd" id="6_j3p58"]
+[ext_resource type="Script" path="res://Scripts/FluidTube.gd" id="6_j3p58"]
 [ext_resource type="Texture2D" uid="uid://cxxu6vsaaawbd" path="res://Assets/Town.png" id="6_ni75q"]
+[ext_resource type="Script" path="res://Scripts/FluidReservior.gd" id="8_jewuj"]
 [ext_resource type="Texture2D" uid="uid://c23txl0khgj6s" path="res://Assets/Newspaper Background.png" id="9_ho3an"]
 [ext_resource type="Script" path="res://Scripts/newspaper_text.gd" id="10_q8k4m"]
 
@@ -55,35 +56,46 @@ offset_bottom = 112.0
 
 [node name="LavaCheckBox" type="CheckBox" parent="VolcanoContentButtons"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("4_ag2wq")
+button_pressed = true
 button_group = ExtResource("5_ssoie")
 text = "Lava"
 
 [node name="ChocoCheckBox" type="CheckBox" parent="VolcanoContentButtons"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("4_ag2wq")
 button_group = ExtResource("5_ssoie")
 text = "Chocolate Syrup"
 
 [node name="Molasses" type="CheckBox" parent="VolcanoContentButtons"]
 layout_mode = 2
+focus_mode = 0
 theme = ExtResource("4_ag2wq")
 button_group = ExtResource("5_ssoie")
 text = "Molasses "
 
 [node name="CallToAction" type="Label" parent="."]
-visible = false
-offset_left = 448.0
-offset_top = 544.0
-offset_right = 704.0
-offset_bottom = 592.0
-theme_type_variation = &"HeaderLarge"
+layout_mode = 0
+offset_left = 208.0
+offset_top = 584.0
+offset_right = 392.0
+offset_bottom = 640.0
+theme_type_variation = &"HeaderSmall"
 theme_override_fonts/font = ExtResource("1_81cud")
-text = "Press Space!"
+text = "mash space
+to fill"
 horizontal_alignment = 1
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-visible = false
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 344.0
+offset_top = 248.0
+offset_right = 424.0
+offset_bottom = 640.0
+
+[node name="FluidTube" type="ProgressBar" parent="." groups=["FluidChannel"]]
 layout_mode = 0
 offset_left = 368.0
 offset_top = 248.0
@@ -93,12 +105,13 @@ fill_mode = 3
 show_percentage = false
 script = ExtResource("6_j3p58")
 
-[node name="Reservior" type="Panel" parent="."]
+[node name="FluidReservior" type="Panel" parent="." groups=["FluidChannel"]]
 layout_mode = 0
 offset_left = 344.0
 offset_top = 608.0
 offset_right = 424.0
 offset_bottom = 640.0
+script = ExtResource("8_jewuj")
 
 [node name="NewspaperBackground" type="Sprite2D" parent="." groups=["Newspaper"]]
 visible = false
@@ -129,7 +142,4 @@ offset_right = 632.0
 offset_bottom = 552.0
 text = "Reset"
 
-[connection signal="toggled" from="VolcanoContentButtons/LavaCheckBox" to="." method="_on_radio_toggled" binds= ["LavaCheckBox", "Lava"]]
-[connection signal="toggled" from="VolcanoContentButtons/ChocoCheckBox" to="." method="_on_radio_toggled" binds= ["ChocoCheckBox", "Chocolate Syrup"]]
-[connection signal="toggled" from="VolcanoContentButtons/Molasses" to="." method="_on_radio_toggled" binds= ["Molasses", "Molasses"]]
 [connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]
