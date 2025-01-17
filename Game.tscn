@@ -200,12 +200,15 @@ theme_type_variation = &"HeaderLarge"
 text = "1"
 
 [node name="Newspaper" type="Control" parent="."]
-visible = false
-anchors_preset = 0
-offset_left = 320.0
-offset_top = 56.0
-offset_right = 832.0
-offset_bottom = 568.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -256.0
+offset_top = 72.0
+offset_right = 256.0
+offset_bottom = 584.0
+grow_horizontal = 2
 script = ExtResource("11_idbby")
 
 [node name="NewspaperBackground" type="Sprite2D" parent="Newspaper" groups=["Newspaper"]]
