@@ -3,6 +3,7 @@ extends ProgressBar
 const Fluidslib = preload("res://Scripts/Fluids.gd")
 const Fluids = Fluidslib.Fluids
 const Colors = Fluidslib.fluid_colors
+const fluid_decay_rates = Fluidslib.fluid_decay_rates
 
 
 var _fluid_material = StyleBoxFlat.new()
@@ -26,13 +27,14 @@ func _process(delta: float) -> void:
 			prepare_erupt()
 	# Handle Fluid Decay
 	else:
-		match _fluid_type:
-			Fluids.LAVA:
-				value -= 1 * delta
-			Fluids.CHOCO:
-				value -= 5 * delta
-			Fluids.MOLASSES:
-				value -= 1 * delta
+		value -= fluid_decay_rates[_fluid_type] * delta
+		#match _fluid_type:
+			#Fluids.LAVA:
+				#value -= 1 * delta
+			#Fluids.CHOCO:
+				#value -= 5 * delta
+			#Fluids.MOLASSES:
+				#value -= 1 * delta
 		
 
 func prepare_erupt():
