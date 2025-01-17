@@ -6,6 +6,7 @@ var fluid_names = Fluidslib.fluid_names
 var fluid_descriptions = Fluidslib.fluid_descriptions
 
 var checkbox = preload("res://check_box.tscn")
+var button_group = preload("res://LavaTypeGroup.tres")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,19 +14,27 @@ func _ready() -> void:
 	for i in fluid_names.size():
 		var button = checkbox.instantiate()
 		button.text = fluid_names[i]
+		button.button_group = button_group
+		button.button_group.allow_unpress = false
 		$VolcanoSettings/VolcanoContentButtons.add_child(button)
 		
 	
 	# Bind Fluid choice checkboxes
 	var i = 0
-	for object in $VolcanoSettings/VolcanoContentButtons.get_children():
-		if object is CheckBox:
-			object.toggled.connect(_on_radio_toggled.bind(i))
+	var all_buttons = $VolcanoSettings/VolcanoContentButtons.get_children()
+	for button in all_buttons:
+		if button is CheckBox:
+			button.toggled.connect(_on_radio_toggled.bind(i))
 			i += 1
+	
+	# Turn on first button
+	all_buttons[0].button_pressed = true
+	all_buttons[0].emit_signal("toggled", true)
+	
 	
 	# Prepare Town & Data
 	set_town_name()
-	$Newspaper.set_text(Fluids.LAVA, 2)
+	#$Newspaper.set_text(Fluids.LAVA, 2)
 
 
 
