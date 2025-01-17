@@ -2,10 +2,20 @@ extends Control
 
 const Fluidslib = preload("res://Scripts/Fluids.gd")
 const Fluids = Fluidslib.Fluids
+var fluid_names = Fluidslib.fluid_names
 var fluid_descriptions = Fluidslib.fluid_descriptions
+
+var checkbox = preload("res://check_box.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	# Create Fluid Checkboxes
+	for i in fluid_names.size():
+		var button = checkbox.instantiate()
+		button.text = fluid_names[i]
+		$VolcanoSettings/VolcanoContentButtons.add_child(button)
+		
+	
 	# Bind Fluid choice checkboxes
 	var i = 0
 	for object in $VolcanoSettings/VolcanoContentButtons.get_children():
@@ -13,7 +23,7 @@ func _ready() -> void:
 			object.toggled.connect(_on_radio_toggled.bind(i))
 			i += 1
 	
-	
+	# Prepare Town & Data
 	set_town_name()
 	$Newspaper.set_text(Fluids.LAVA, 2)
 

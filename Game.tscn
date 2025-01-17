@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7pcprka6u8cd"]
+[gd_scene load_steps=18 format=3 uid="uid://b7pcprka6u8cd"]
 
 [ext_resource type="Texture2D" uid="uid://c63rm1ai832eb" path="res://Assets/Volcano.svg" id="1_03k7c"]
 [ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_81cud"]
@@ -8,9 +8,10 @@
 [ext_resource type="Script" path="res://Scripts/FluidTube.gd" id="6_j3p58"]
 [ext_resource type="AudioStream" uid="uid://dvda1c530727j" path="res://Assets/Audio/earth-rumble.mp3" id="7_pqi0u"]
 [ext_resource type="AudioStream" uid="uid://etfhdh3ylg5j" path="res://Assets/Audio/distant-explosion.mp3" id="8_7wafm"]
+[ext_resource type="PackedScene" uid="uid://sgmdaua2ydm6" path="res://check_box.tscn" id="8_ajqof"]
 [ext_resource type="Script" path="res://Scripts/FluidReservior.gd" id="8_jewuj"]
 [ext_resource type="Texture2D" uid="uid://c23txl0khgj6s" path="res://Assets/Newspaper Background.png" id="9_ho3an"]
-[ext_resource type="Script" path="res://TownController.gd" id="10_6h8bf"]
+[ext_resource type="Script" path="res://Scripts/TownController.gd" id="10_6h8bf"]
 [ext_resource type="Script" path="res://Scripts/newspaper.gd" id="11_idbby"]
 
 [sub_resource type="Animation" id="Animation_srx8a"]
@@ -50,6 +51,8 @@ _data = {
 "RESET": SubResource("Animation_srx8a"),
 "camera_shake": SubResource("Animation_k0oku")
 }
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_58m2t"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -150,13 +153,9 @@ offset_top = 83.0
 offset_right = 143.0
 offset_bottom = 178.0
 
-[node name="LavaCheckBox" type="CheckBox" parent="VolcanoSettings/VolcanoContentButtons"]
+[node name="LavaCheckBox" parent="VolcanoSettings/VolcanoContentButtons" instance=ExtResource("8_ajqof")]
 layout_mode = 2
-focus_mode = 0
-theme = ExtResource("4_ag2wq")
-button_pressed = true
-button_group = ExtResource("5_ssoie")
-text = "Lava"
+button_group = SubResource("ButtonGroup_58m2t")
 
 [node name="ChocoCheckBox" type="CheckBox" parent="VolcanoSettings/VolcanoContentButtons"]
 layout_mode = 2

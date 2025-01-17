@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://sgmdaua2ydm6"]
+
+[ext_resource type="Theme" uid="uid://dnhbhyk8gn2sa" path="res://Assets/MainTheme.tres" id="1_ii4cg"]
+[ext_resource type="ButtonGroup" uid="uid://cedg0umu6dmep" path="res://LavaTypeGroup.tres" id="2_jvqv7"]
+
+[node name="LavaCheckBox" type="CheckBox"]
+focus_mode = 0
+theme = ExtResource("1_ii4cg")
+button_group = ExtResource("2_jvqv7")
+text = "Lava"
