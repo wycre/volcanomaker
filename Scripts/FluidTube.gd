@@ -1,6 +1,8 @@
 extends ProgressBar
 
-const Fluids = preload("res://Scripts/Fluids.gd").Fluids
+const Fluidslib = preload("res://Scripts/Fluids.gd")
+const Fluids = Fluidslib.Fluids
+const Colors = Fluidslib.fluid_colors
 
 
 var _fluid_material = StyleBoxFlat.new()
@@ -61,12 +63,9 @@ func erupt():
 	$RumblePlayer.stop()
 	
 	# Display newspaper
-	var newspaper_background = get_node("../../NewspaperBackground")
-	var newspaper_text = get_node("../../NewspaperText")
-	var reset_button = get_node("../../ResetButton")
-	newspaper_background.visible = true
-	newspaper_text.visible = true
-	reset_button.visible = true
+	var newspaper = get_node("../../Newspaper")
+	newspaper.visible = true
+	
 	get_node("../../VolcanoAnimator").stop()
 	
 	# Delete the dimer
@@ -77,12 +76,7 @@ func erupt():
 # Changes the color of the fluid and resets progress
 func change_color(fluid_type: Fluids):
 	_fluid_type = fluid_type
-	if fluid_type == Fluids.LAVA:
-		_fluid_material.bg_color = Color("f75b1d")
-	if fluid_type == Fluids.CHOCO:
-		_fluid_material.bg_color = Color("281f07")
-	if fluid_type == Fluids.MOLASSES:
-		_fluid_material.bg_color = Color("160e01")
+	_fluid_material.bg_color = Colors[fluid_type]
 
 	# Reset progress when chaning fluid types
 	value = 0

@@ -1,7 +1,8 @@
 extends Control
 
-const Fluids = preload("res://Scripts/Fluids.gd").Fluids
-
+const Fluidslib = preload("res://Scripts/Fluids.gd")
+const Fluids = Fluidslib.Fluids
+var fluid_descriptions = Fluidslib.fluid_descriptions
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -11,6 +12,10 @@ func _ready() -> void:
 		if object is CheckBox:
 			object.toggled.connect(_on_radio_toggled.bind(i))
 			i += 1
+	
+	
+	set_town_name()
+	$Newspaper.set_text(Fluids.LAVA, 2)
 
 
 
@@ -25,14 +30,13 @@ func _on_radio_toggled(button_pressed, fluid_type: Fluids):
 		$VolcanoGroup/FluidTube.change_color(fluid_type)
 		$VolcanoGroup/FluidReservior.change_color(fluid_type)
 		
-		get_node("NewspaperText")._change_text(name)  # TODO Newspaper Text Engine
+		$Newspaper.set_text(fluid_type, randi() % fluid_descriptions.size())
+		#get_node("NewspaperText")._change_text(name)  # TODO Newspaper Text Engine
 
 
 # Reset state to begining
 func _on_reset_button_pressed() -> void:
-	$NewspaperBackground.visible = false
-	$NewspaperText.visible = false
-	$ResetButton.visible = false
+	$Newspaper.visible = false
 	
 	$VolcanoGroup/FluidTube.change_color(Fluids.LAVA)
 	$VolcanoGroup/FluidReservior.change_color(Fluids.LAVA)
@@ -45,11 +49,18 @@ func _on_reset_button_pressed() -> void:
 				button.button_pressed = false
 	$VolcanoContentButtons/LavaCheckBox.button_pressed = true
 	
-	# Restart Population Growth
+	# Reset Town
 	$TownArea.reset_pop()
 	$TownArea.timer_active = true
+	set_town_name()
 	
 
-
-func test(toggled_on: bool, extra_arg_0: int) -> void:
-	pass # Replace with function body.
+func set_town_name():
+	var names = []
+	var name_file = FileAccess.open("res://Text/town-names.txt", FileAccess.READ)
+	while not name_file.eof_reached():
+		var line = name_file.get_line()
+		names.append(line)
+	var chosen_name = names[randi() % names.size()]
+	$Newspaper.town_name = chosen_name
+	$TownArea/TownName.text = "Town Name: " + chosen_name
