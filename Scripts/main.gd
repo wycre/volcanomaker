@@ -8,7 +8,7 @@ var fluid_descriptions = Fluidslib.fluid_descriptions
 func _ready() -> void:
 	# Bind Fluid choice checkboxes
 	var i = 0
-	for object in $VolcanoContentButtons.get_children():
+	for object in $VolcanoSettings/VolcanoContentButtons.get_children():
 		if object is CheckBox:
 			object.toggled.connect(_on_radio_toggled.bind(i))
 			i += 1
@@ -31,7 +31,6 @@ func _on_radio_toggled(button_pressed, fluid_type: Fluids):
 		$VolcanoGroup/FluidReservior.change_color(fluid_type)
 		
 		$Newspaper.set_text(fluid_type, randi() % fluid_descriptions.size())
-		#get_node("NewspaperText")._change_text(name)  # TODO Newspaper Text Engine
 
 
 # Reset state to begining
@@ -43,16 +42,19 @@ func _on_reset_button_pressed() -> void:
 	
 	$VolcanoGroup/FluidTube.erupted = false
 	
-	for button in $VolcanoContentButtons.get_children():
+	var buttons = $VolcanoSettings/VolcanoContentButtons.get_children()
+	for button in buttons:
 		if button is CheckBox:
 			if button.button_pressed == true:
 				button.button_pressed = false
-	$VolcanoContentButtons/LavaCheckBox.button_pressed = true
+	buttons[0].button_pressed = true
+	
 	
 	# Reset Town
 	$TownArea.reset_pop()
 	$TownArea.timer_active = true
 	set_town_name()
+	buttons[0].emit_signal("toggled", true)
 	
 
 func set_town_name():

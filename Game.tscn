@@ -132,17 +132,25 @@ offset_right = 295.0
 offset_bottom = 468.0
 script = ExtResource("8_jewuj")
 
-[node name="VolcanoContentButtons" type="VBoxContainer" parent="."]
-layout_mode = 1
-offset_top = 60.0
+[node name="VolcanoSettings" type="Control" parent="."]
+anchors_preset = 0
 offset_right = 40.0
-offset_bottom = 112.0
+offset_bottom = 40.0
 
-[node name="EruptionOptionsLabel" type="Label" parent="VolcanoContentButtons"]
+[node name="EruptionOptionsLabel" type="Label" parent="VolcanoSettings"]
 layout_mode = 2
+offset_top = 60.0
+offset_right = 166.0
+offset_bottom = 83.0
 text = "This is a _____ Volcano"
 
-[node name="LavaCheckBox" type="CheckBox" parent="VolcanoContentButtons"]
+[node name="VolcanoContentButtons" type="VBoxContainer" parent="VolcanoSettings"]
+layout_mode = 1
+offset_top = 83.0
+offset_right = 143.0
+offset_bottom = 178.0
+
+[node name="LavaCheckBox" type="CheckBox" parent="VolcanoSettings/VolcanoContentButtons"]
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("4_ag2wq")
@@ -150,14 +158,14 @@ button_pressed = true
 button_group = ExtResource("5_ssoie")
 text = "Lava"
 
-[node name="ChocoCheckBox" type="CheckBox" parent="VolcanoContentButtons"]
+[node name="ChocoCheckBox" type="CheckBox" parent="VolcanoSettings/VolcanoContentButtons"]
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("4_ag2wq")
 button_group = ExtResource("5_ssoie")
 text = "Chocolate Syrup"
 
-[node name="Molasses" type="CheckBox" parent="VolcanoContentButtons"]
+[node name="Molasses" type="CheckBox" parent="VolcanoSettings/VolcanoContentButtons"]
 layout_mode = 2
 focus_mode = 0
 theme = ExtResource("4_ag2wq")
