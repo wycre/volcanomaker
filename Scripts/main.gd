@@ -84,4 +84,4 @@ func set_town_name():
 		names.append(line)
 	var chosen_name = names[randi() % names.size()]
 	$Newspaper.town_name = chosen_name
-	$TownArea/TownName.text = "Town Name: " + chosen_name
+	get_node("TownArea/TownName").text = "Town Name: " + chosen_name
