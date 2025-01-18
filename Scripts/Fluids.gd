@@ -32,11 +32,11 @@ static var fluid_names = [
 ]
 
 # Higher numbers means the fluid will drain faster
-# Values below 0.35 appear to stop decay entirely
+# If the value is too low, it will not decay at all, this depends on the system, 0.5 is a safe minimum
 static var fluid_decay_rates = [
 	1,
 	5,
-	0.35,
+	0.5,
 ]
 
 # Color of the fluid in a Hex Code
