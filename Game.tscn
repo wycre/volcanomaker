@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://b7pcprka6u8cd"]
+[gd_scene load_steps=15 format=3 uid="uid://b7pcprka6u8cd"]
 
 [ext_resource type="Texture2D" uid="uid://c63rm1ai832eb" path="res://Assets/Volcano.svg" id="1_03k7c"]
 [ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_81cud"]
@@ -9,7 +9,6 @@
 [ext_resource type="AudioStream" uid="uid://etfhdh3ylg5j" path="res://Assets/Audio/distant-explosion.mp3" id="8_7wafm"]
 [ext_resource type="Script" path="res://Scripts/FluidReservior.gd" id="8_jewuj"]
 [ext_resource type="Texture2D" uid="uid://c23txl0khgj6s" path="res://Assets/Newspaper Background.png" id="9_ho3an"]
-[ext_resource type="PackedScene" uid="uid://chnxgmash8l47" path="res://hut.tscn" id="10_1fhas"]
 [ext_resource type="Script" path="res://Scripts/TownController.gd" id="10_6h8bf"]
 [ext_resource type="Script" path="res://Scripts/newspaper.gd" id="11_idbby"]
 
@@ -88,8 +87,8 @@ anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 130.0
 offset_top = -680.0
-offset_right = 975.0
-offset_bottom = 1.0
+offset_right = 130.0
+offset_bottom = -680.0
 grow_vertical = 0
 
 [node name="Volcano" type="Sprite2D" parent="VolcanoGroup"]
@@ -98,7 +97,6 @@ scale = Vector2(1.42191, 1.42191)
 texture = ExtResource("1_03k7c")
 
 [node name="CallToAction" type="Label" parent="VolcanoGroup"]
-layout_mode = 0
 offset_left = 157.0
 offset_top = 582.0
 offset_right = 341.0
@@ -111,7 +109,6 @@ to fill"
 horizontal_alignment = 1
 
 [node name="FluidTube" type="ProgressBar" parent="VolcanoGroup" groups=["FluidChannel"]]
-layout_mode = 0
 offset_left = 340.0
 offset_top = 93.0
 offset_right = 396.0
@@ -127,7 +124,6 @@ stream = ExtResource("7_pqi0u")
 stream = ExtResource("8_7wafm")
 
 [node name="FluidReservior" type="Panel" parent="VolcanoGroup" groups=["FluidChannel"]]
-layout_mode = 0
 offset_left = 309.0
 offset_top = 619.0
 offset_right = 429.0
@@ -207,10 +203,6 @@ theme = ExtResource("4_ag2wq")
 theme_type_variation = &"HeaderLarge"
 theme_override_font_sizes/font_size = 35
 text = "1"
-
-[node name="Sprite2D" parent="TownArea" instance=ExtResource("10_1fhas")]
-position = Vector2(800, 755)
-scale = Vector2(0.3, 0.3)
 
 [node name="Newspaper" type="Control" parent="."]
 visible = false
