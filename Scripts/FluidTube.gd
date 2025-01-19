@@ -2,8 +2,8 @@ extends ProgressBar
 
 const Fluidslib = preload("res://Scripts/Fluids.gd")
 const Fluids = Fluidslib.Fluids
-const Colors = Fluidslib.fluid_colors
-const fluid_decay_rates = Fluidslib.fluid_decay_rates
+var Colors = Fluidslib.fluid_colors
+var fluid_decay_rates = Fluidslib.fluid_decay_rates
 
 
 var _fluid_material = StyleBoxFlat.new()

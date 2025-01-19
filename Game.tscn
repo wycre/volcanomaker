@@ -141,6 +141,7 @@ layout_mode = 2
 offset_top = 60.0
 offset_right = 166.0
 offset_bottom = 83.0
+theme = ExtResource("4_ag2wq")
 text = "This is a _____ Volcano"
 
 [node name="VolcanoContentButtons" type="VBoxContainer" parent="VolcanoSettings"]
@@ -235,6 +236,7 @@ offset_left = 200.0
 offset_top = 464.0
 offset_right = 312.0
 offset_bottom = 496.0
+theme = ExtResource("4_ag2wq")
 text = "Reset"
 
 [connection signal="pressed" from="Newspaper/ResetButton" to="." method="_on_reset_button_pressed"]
