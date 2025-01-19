@@ -47,6 +47,18 @@ static var fluid_colors = [
 	Color("160e01"),
 ]
 
+static var volcano_textures = [
+	load("res://Assets/Textures/VolcanoLava.png"),
+	load("res://Assets/Textures/VolcanoChoco.png"),
+	load("res://Assets/Textures/VolcanoMolasses.png"),
+]
+
+static var town_audio = [
+	load("res://Assets/Audio/screaming.mp3"),
+	load("res://Assets/Audio/yummy.mp3"),
+	load("res://Assets/Audio/molasses.mp3"),
+]
+
 # Flavor text description of the fluid used in the newspaper
 static var fluid_descriptions = [
 	"Hot Lava",

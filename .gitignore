@@ -1,3 +1,4 @@
 # Godot 4+ specific ignores
 .godot/
 /android/
+godot.web.template_release.wasm32.nothreads.zip

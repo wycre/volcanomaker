@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c23txl0khgj6s"
-path="res://.godot/imported/Newspaper Background.png-6b347a109c5fe8608807818f984a72a0.ctex"
+uid="uid://c63rm1ai832eb"
+path="res://.godot/imported/Volcano.svg-90dd526a37516237873f36d035727ce8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Newspaper Background.png"
-dest_files=["res://.godot/imported/Newspaper Background.png-6b347a109c5fe8608807818f984a72a0.ctex"]
+source_file="res://Assets/Textures/Volcano.svg"
+dest_files=["res://.godot/imported/Volcano.svg-90dd526a37516237873f36d035727ce8.ctex"]
 
 [params]
 
@@ -32,3 +32,6 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
+svg/scale=1.0
+editor/scale_with_editor_scale=false
+editor/convert_colors_with_editor_theme=false

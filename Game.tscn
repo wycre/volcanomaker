@@ -1,16 +1,31 @@
 [gd_scene load_steps=15 format=3 uid="uid://b7pcprka6u8cd"]
 
-[ext_resource type="Texture2D" uid="uid://c63rm1ai832eb" path="res://Assets/Volcano.svg" id="1_03k7c"]
 [ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_81cud"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_yyjb8"]
+[ext_resource type="Script" path="res://Scripts/volcano.gd" id="3_ohjr6"]
+[ext_resource type="Texture2D" uid="uid://cnhr7xomw64jj" path="res://Assets/Textures/VolcanoBase.png" id="3_ssvbp"]
 [ext_resource type="Theme" uid="uid://dnhbhyk8gn2sa" path="res://Assets/MainTheme.tres" id="4_ag2wq"]
-[ext_resource type="Script" path="res://Scripts/FluidTube.gd" id="6_j3p58"]
 [ext_resource type="AudioStream" uid="uid://dvda1c530727j" path="res://Assets/Audio/earth-rumble.mp3" id="7_pqi0u"]
 [ext_resource type="AudioStream" uid="uid://etfhdh3ylg5j" path="res://Assets/Audio/distant-explosion.mp3" id="8_7wafm"]
-[ext_resource type="Script" path="res://Scripts/FluidReservior.gd" id="8_jewuj"]
-[ext_resource type="Texture2D" uid="uid://c23txl0khgj6s" path="res://Assets/Newspaper Background.png" id="9_ho3an"]
+[ext_resource type="AudioStream" uid="uid://7nn6gh16fkk3" path="res://Assets/Audio/screaming.mp3" id="8_e8lo5"]
 [ext_resource type="Script" path="res://Scripts/TownController.gd" id="10_6h8bf"]
 [ext_resource type="Script" path="res://Scripts/newspaper.gd" id="11_idbby"]
+[ext_resource type="Texture2D" uid="uid://c23txl0khgj6s" path="res://Assets/Textures/Newspaper Background.png" id="11_n6rmp"]
+
+[sub_resource type="Animation" id="Animation_8uqtc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Volcano:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(130, 400)]
+}
 
 [sub_resource type="Animation" id="Animation_yrgfw"]
 resource_name = "volcano_shake"
@@ -19,7 +34,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("VolcanoGroup:position")
+tracks/0/path = NodePath("Volcano:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -27,21 +42,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
 "values": [Vector2(130, 400), Vector2(150, 410), Vector2(130, 400), Vector2(130, 405), Vector2(150, 410), Vector2(130, 405)]
-}
-
-[sub_resource type="Animation" id="Animation_8uqtc"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("VolcanoGroup:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(130, 400)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nghar"]
@@ -74,13 +74,7 @@ theme_override_font_sizes/font_size = 50
 text = "Volcano Maker"
 horizontal_alignment = 1
 
-[node name="VolcanoAnimator" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_nghar")
-}
-playback_auto_capture = false
-
-[node name="VolcanoGroup" type="Control" parent="."]
+[node name="Volcano" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
@@ -90,13 +84,15 @@ offset_top = -680.0
 offset_right = 130.0
 offset_bottom = -680.0
 grow_vertical = 0
+script = ExtResource("3_ohjr6")
 
-[node name="Volcano" type="Sprite2D" parent="VolcanoGroup"]
-position = Vector2(530, 380)
-scale = Vector2(1.42191, 1.42191)
-texture = ExtResource("1_03k7c")
+[node name="VolcanoSprite" type="Sprite2D" parent="Volcano"]
+position = Vector2(371.5, 344)
+scale = Vector2(0.709385, 0.741228)
+texture = ExtResource("3_ssvbp")
 
-[node name="CallToAction" type="Label" parent="VolcanoGroup"]
+[node name="CallToAction" type="Label" parent="Volcano"]
+layout_mode = 0
 offset_left = 157.0
 offset_top = 582.0
 offset_right = 341.0
@@ -108,27 +104,37 @@ text = "mash space
 to fill"
 horizontal_alignment = 1
 
-[node name="FluidTube" type="ProgressBar" parent="VolcanoGroup" groups=["FluidChannel"]]
+[node name="FluidTube" type="ProgressBar" parent="Volcano" groups=["FluidChannel"]]
+layout_mode = 0
 offset_left = 340.0
-offset_top = 93.0
+offset_top = 66.0
 offset_right = 396.0
 offset_bottom = 632.0
 fill_mode = 3
 show_percentage = false
-script = ExtResource("6_j3p58")
 
-[node name="RumblePlayer" type="AudioStreamPlayer" parent="VolcanoGroup/FluidTube"]
-stream = ExtResource("7_pqi0u")
-
-[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="VolcanoGroup/FluidTube"]
-stream = ExtResource("8_7wafm")
-
-[node name="FluidReservior" type="Panel" parent="VolcanoGroup" groups=["FluidChannel"]]
+[node name="FluidReservior" type="Panel" parent="Volcano" groups=["FluidChannel"]]
+layout_mode = 0
 offset_left = 309.0
 offset_top = 619.0
 offset_right = 429.0
 offset_bottom = 667.0
-script = ExtResource("8_jewuj")
+
+[node name="RumblePlayer" type="AudioStreamPlayer" parent="Volcano"]
+stream = ExtResource("7_pqi0u")
+
+[node name="ExplosionPlayer" type="AudioStreamPlayer" parent="Volcano"]
+stream = ExtResource("8_7wafm")
+
+[node name="VolcanoAnimator" type="AnimationPlayer" parent="Volcano"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_nghar")
+}
+playback_auto_capture = false
+
+[node name="TownReactionPlayer" type="AudioStreamPlayer" parent="Volcano"]
+stream = ExtResource("8_e8lo5")
 
 [node name="VolcanoSettings" type="Control" parent="."]
 anchors_preset = 0
@@ -220,7 +226,7 @@ script = ExtResource("11_idbby")
 [node name="NewspaperBackground" type="Sprite2D" parent="Newspaper" groups=["Newspaper"]]
 position = Vector2(488, 464)
 scale = Vector2(0.450684, 0.450684)
-texture = ExtResource("9_ho3an")
+texture = ExtResource("11_n6rmp")
 
 [node name="NewspaperText" type="Label" parent="Newspaper" groups=["Newspaper"]]
 layout_mode = 1
@@ -256,3 +262,4 @@ theme_override_font_sizes/font_size = 35
 text = "Reset"
 
 [connection signal="pressed" from="Newspaper/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="Newspaper/ResetButton" to="Volcano" method="reset_volcano"]

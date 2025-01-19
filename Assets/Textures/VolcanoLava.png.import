@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c63rm1ai832eb"
-path="res://.godot/imported/Volcano.svg-dbce076fa0798a587b0aedec1016588a.ctex"
+uid="uid://bgwyhsfxa66kd"
+path="res://.godot/imported/VolcanoLava.png-f412b3bca4725cab19dad45b471e4474.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Volcano.svg"
-dest_files=["res://.godot/imported/Volcano.svg-dbce076fa0798a587b0aedec1016588a.ctex"]
+source_file="res://Assets/Textures/VolcanoLava.png"
+dest_files=["res://.godot/imported/VolcanoLava.png-f412b3bca4725cab19dad45b471e4474.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false

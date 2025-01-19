@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://coe00a5nekqhk"
-path="res://.godot/imported/Tower.png-2c4972127d897750cfba6269c556c94d.ctex"
+uid="uid://bw4fbiqb7o8my"
+path="res://.godot/imported/VolcanoMolasses.png-ca30858d4e013d9d0a4bcd4f8295eb56.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Tower.png"
-dest_files=["res://.godot/imported/Tower.png-2c4972127d897750cfba6269c556c94d.ctex"]
+source_file="res://Assets/Textures/VolcanoMolasses.png"
+dest_files=["res://.godot/imported/VolcanoMolasses.png-ca30858d4e013d9d0a4bcd4f8295eb56.ctex"]
 
 [params]
 

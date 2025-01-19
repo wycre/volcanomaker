@@ -158,7 +158,7 @@ const engine = new Engine(GODOT_CONFIG);
 	});
 
 	// Check if on mobile browser first
-	if (mobileCheck) {
+	if (mobileCheck()) {
 		displayFailureNotice("Sorry, this game only works on desktop browsers.") 
 	}
 
