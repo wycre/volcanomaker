@@ -6,5 +6,6 @@
 [node name="LavaCheckBox" type="CheckBox"]
 focus_mode = 0
 theme = ExtResource("1_ii4cg")
+theme_override_font_sizes/font_size = 30
 button_group = ExtResource("2_jvqv7")
 text = "Lava"

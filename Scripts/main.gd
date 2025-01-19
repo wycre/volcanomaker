@@ -27,14 +27,16 @@ func _ready() -> void:
 			button.toggled.connect(_on_radio_toggled.bind(i))
 			i += 1
 	
+	# Prepare Town & Data
+	set_town_name()
+	#$Newspaper.set_text(Fluids.LAVA, 2)
+	
 	# Turn on first button
 	all_buttons[0].button_pressed = true
 	all_buttons[0].emit_signal("toggled", true)
 	
 	
-	# Prepare Town & Data
-	set_town_name()
-	#$Newspaper.set_text(Fluids.LAVA, 2)
+	
 
 
 

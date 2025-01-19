@@ -4,8 +4,9 @@ var hut = preload("res://hut.tscn")
 var house = preload("res://house.tscn")
 var tower = preload("res://tower.tscn")
 
-const building_scale = Vector2(0.15,0.15)
-const screenbottom = 488
+const building_scale = Vector2(0.3,0.3)
+const screenbottom = 755
+const screenright = 800
 
 var population: int = 1
 var pop_wave: int = 0
@@ -60,7 +61,7 @@ func reset_pop():
 	add_hut()
 	
 func add_hut():
-	var x = randi() % 432
+	var x = randi() % screenright
 	var pos = Vector2(x,screenbottom)
 	var instance = hut.instantiate()
 	instance.scale = building_scale
@@ -68,7 +69,7 @@ func add_hut():
 	add_child(instance)
 
 func add_house():
-	var x = randi() % 432
+	var x = randi() % screenright
 	var pos = Vector2(x,screenbottom)
 	var instance = house.instantiate()
 	instance.scale = building_scale
@@ -76,7 +77,7 @@ func add_house():
 	add_child(instance)
 
 func add_tower():
-	var x = randi() % 432
+	var x = randi() % screenright
 	var pos = Vector2(x,screenbottom)
 	var instance = tower.instantiate()
 	instance.scale = building_scale

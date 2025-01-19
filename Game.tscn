@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7pcprka6u8cd"]
+[gd_scene load_steps=13 format=3 uid="uid://b7pcprka6u8cd"]
 
 [ext_resource type="Texture2D" uid="uid://c63rm1ai832eb" path="res://Assets/Volcano.svg" id="1_03k7c"]
 [ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_81cud"]
@@ -9,46 +9,9 @@
 [ext_resource type="AudioStream" uid="uid://etfhdh3ylg5j" path="res://Assets/Audio/distant-explosion.mp3" id="8_7wafm"]
 [ext_resource type="Script" path="res://Scripts/FluidReservior.gd" id="8_jewuj"]
 [ext_resource type="Texture2D" uid="uid://c23txl0khgj6s" path="res://Assets/Newspaper Background.png" id="9_ho3an"]
+[ext_resource type="PackedScene" uid="uid://chnxgmash8l47" path="res://hut.tscn" id="10_1fhas"]
 [ext_resource type="Script" path="res://Scripts/TownController.gd" id="10_6h8bf"]
 [ext_resource type="Script" path="res://Scripts/newspaper.gd" id="11_idbby"]
-
-[sub_resource type="Animation" id="Animation_srx8a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(130, 170)]
-}
-
-[sub_resource type="Animation" id="Animation_k0oku"]
-resource_name = "camera_shake"
-length = 0.5
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.233333, 0.3, 0.4, 0.466667, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(130, 170), Vector2(125, 180), Vector2(125, 170), Vector2(135, 180), Vector2(135, 170), Vector2(125, 180), Vector2(135, 170), Vector2(125, 180)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_tf54c"]
-_data = {
-"RESET": SubResource("Animation_srx8a"),
-"camera_shake": SubResource("Animation_k0oku")
-}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -68,17 +31,11 @@ offset_left = -100.0
 offset_right = 100.0
 offset_bottom = 40.0
 grow_horizontal = 2
+theme = ExtResource("4_ag2wq")
 theme_type_variation = &"HeaderLarge"
-theme_override_fonts/font = ExtResource("1_81cud")
+theme_override_font_sizes/font_size = 50
 text = "Volcano Maker"
 horizontal_alignment = 1
-
-[node name="VolcanoAnimator" type="AnimationPlayer" parent="."]
-root_node = NodePath("../VolcanoGroup")
-libraries = {
-"": SubResource("AnimationLibrary_tf54c")
-}
-playback_auto_capture = false
 
 [node name="VolcanoGroup" type="Control" parent="."]
 layout_mode = 1
@@ -86,22 +43,24 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 130.0
-offset_top = -478.0
-offset_right = 651.0
-offset_bottom = 2.0
+offset_top = -680.0
+offset_right = 975.0
+offset_bottom = 1.0
 grow_vertical = 0
 
 [node name="Volcano" type="Sprite2D" parent="VolcanoGroup"]
-position = Vector2(368, 265)
+position = Vector2(530, 380)
+scale = Vector2(1.42191, 1.42191)
 texture = ExtResource("1_03k7c")
 
 [node name="CallToAction" type="Label" parent="VolcanoGroup"]
 layout_mode = 0
-offset_left = 80.0
-offset_top = 409.0
-offset_right = 264.0
-offset_bottom = 465.0
-theme_type_variation = &"HeaderSmall"
+offset_left = 157.0
+offset_top = 582.0
+offset_right = 341.0
+offset_bottom = 657.0
+theme = ExtResource("4_ag2wq")
+theme_type_variation = &"HeaderLarge"
 theme_override_fonts/font = ExtResource("1_81cud")
 text = "mash space
 to fill"
@@ -109,10 +68,10 @@ horizontal_alignment = 1
 
 [node name="FluidTube" type="ProgressBar" parent="VolcanoGroup" groups=["FluidChannel"]]
 layout_mode = 0
-offset_left = 239.0
-offset_top = 76.0
-offset_right = 271.0
-offset_bottom = 452.0
+offset_left = 340.0
+offset_top = 93.0
+offset_right = 396.0
+offset_bottom = 632.0
 fill_mode = 3
 show_percentage = false
 script = ExtResource("6_j3p58")
@@ -125,10 +84,10 @@ stream = ExtResource("8_7wafm")
 
 [node name="FluidReservior" type="Panel" parent="VolcanoGroup" groups=["FluidChannel"]]
 layout_mode = 0
-offset_left = 215.0
-offset_top = 436.0
-offset_right = 295.0
-offset_bottom = 468.0
+offset_left = 309.0
+offset_top = 619.0
+offset_right = 429.0
+offset_bottom = 667.0
 script = ExtResource("8_jewuj")
 
 [node name="VolcanoSettings" type="Control" parent="."]
@@ -142,13 +101,15 @@ offset_top = 60.0
 offset_right = 166.0
 offset_bottom = 83.0
 theme = ExtResource("4_ag2wq")
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 35
 text = "This is a _____ Volcano"
 
 [node name="VolcanoContentButtons" type="VBoxContainer" parent="VolcanoSettings"]
 layout_mode = 1
-offset_top = 83.0
-offset_right = 143.0
-offset_bottom = 178.0
+offset_top = 100.0
+offset_right = 344.0
+offset_bottom = 963.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
@@ -164,41 +125,48 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -472.0
-offset_top = -520.0
+offset_left = -904.0
+offset_top = -832.0
 grow_horizontal = 0
 grow_vertical = 0
 script = ExtResource("10_6h8bf")
 
 [node name="PopLabel" type="Label" parent="TownArea"]
 layout_mode = 2
-offset_left = 33.0
-offset_top = 54.0
-offset_right = 249.0
-offset_bottom = 90.0
+offset_left = 7.0
+offset_top = 38.0
+offset_right = 277.0
+offset_bottom = 83.0
 theme = ExtResource("4_ag2wq")
 theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 35
 text = "Town Population: "
 
 [node name="TownName" type="Label" parent="TownArea"]
 layout_mode = 2
-offset_left = 33.0
-offset_top = 4.0
-offset_right = 385.0
-offset_bottom = 40.0
+offset_left = 7.0
+offset_top = -7.0
+offset_right = 359.0
+offset_bottom = 38.0
 theme = ExtResource("4_ag2wq")
 theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 35
 text = "Town Name:"
 
 [node name="PopCount" type="Label" parent="TownArea"]
 layout_mode = 0
-offset_left = 249.0
-offset_top = 54.0
-offset_right = 315.0
-offset_bottom = 90.0
+offset_left = 277.0
+offset_top = 38.0
+offset_right = 343.0
+offset_bottom = 83.0
 theme = ExtResource("4_ag2wq")
 theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 35
 text = "1"
+
+[node name="Sprite2D" parent="TownArea" instance=ExtResource("10_1fhas")]
+position = Vector2(800, 755)
+scale = Vector2(0.3, 0.3)
 
 [node name="Newspaper" type="Control" parent="."]
 visible = false
@@ -206,37 +174,49 @@ layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -256.0
-offset_top = 72.0
-offset_right = 256.0
-offset_bottom = 584.0
+offset_left = -488.0
+offset_top = 64.0
+offset_right = 488.0
+offset_bottom = 974.0
 grow_horizontal = 2
 script = ExtResource("11_idbby")
 
 [node name="NewspaperBackground" type="Sprite2D" parent="Newspaper" groups=["Newspaper"]]
-position = Vector2(256, 256)
-scale = Vector2(0.25, 0.25)
+position = Vector2(488, 464)
+scale = Vector2(0.450684, 0.450684)
 texture = ExtResource("9_ho3an")
 
 [node name="NewspaperText" type="Label" parent="Newspaper" groups=["Newspaper"]]
-layout_mode = 2
-offset_left = 24.0
-offset_top = 56.0
-offset_right = 486.0
-offset_bottom = 448.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -416.0
+offset_top = 104.0
+offset_right = 416.0
+offset_bottom = 819.0
+grow_horizontal = 2
 theme = ExtResource("4_ag2wq")
-theme_type_variation = &"HeaderSmall"
+theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 50
 text = "    The town of [town_name] was [town_impact] by a [eruption_descriptor] eruption of [fluid_description]"
 autowrap_mode = 3
 
 [node name="ResetButton" type="Button" parent="Newspaper"]
-layout_mode = 0
-offset_left = 200.0
-offset_top = 464.0
-offset_right = 312.0
-offset_bottom = 496.0
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -99.5
+offset_top = -59.0
+offset_right = 99.5
+grow_horizontal = 2
+grow_vertical = 0
 theme = ExtResource("4_ag2wq")
+theme_override_font_sizes/font_size = 35
 text = "Reset"
 
 [connection signal="pressed" from="Newspaper/ResetButton" to="." method="_on_reset_button_pressed"]
