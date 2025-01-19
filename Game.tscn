@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://b7pcprka6u8cd"]
+[gd_scene load_steps=16 format=3 uid="uid://b7pcprka6u8cd"]
 
 [ext_resource type="Texture2D" uid="uid://c63rm1ai832eb" path="res://Assets/Volcano.svg" id="1_03k7c"]
 [ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_81cud"]
@@ -12,6 +12,44 @@
 [ext_resource type="PackedScene" uid="uid://chnxgmash8l47" path="res://hut.tscn" id="10_1fhas"]
 [ext_resource type="Script" path="res://Scripts/TownController.gd" id="10_6h8bf"]
 [ext_resource type="Script" path="res://Scripts/newspaper.gd" id="11_idbby"]
+
+[sub_resource type="Animation" id="Animation_yrgfw"]
+resource_name = "volcano_shake"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VolcanoGroup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.433333, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(130, 400), Vector2(150, 410), Vector2(130, 400), Vector2(130, 405), Vector2(150, 410), Vector2(130, 405)]
+}
+
+[sub_resource type="Animation" id="Animation_8uqtc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("VolcanoGroup:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(130, 400)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nghar"]
+_data = {
+"RESET": SubResource("Animation_8uqtc"),
+"volcano_shake": SubResource("Animation_yrgfw")
+}
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -36,6 +74,12 @@ theme_type_variation = &"HeaderLarge"
 theme_override_font_sizes/font_size = 50
 text = "Volcano Maker"
 horizontal_alignment = 1
+
+[node name="VolcanoAnimator" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_nghar")
+}
+playback_auto_capture = false
 
 [node name="VolcanoGroup" type="Control" parent="."]
 layout_mode = 1
