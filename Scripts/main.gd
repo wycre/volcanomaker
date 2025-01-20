@@ -4,6 +4,7 @@ const Fluidslib = preload("res://Scripts/Fluids.gd")
 const Fluids = Fluidslib.Fluids
 var fluid_names = Fluidslib.fluid_names
 var fluid_descriptions = Fluidslib.fluid_descriptions
+var eruption_descriptor = Fluidslib.eruption_descriptor
 
 var checkbox = preload("res://check_box.tscn")
 var button_group = preload("res://LavaTypeGroup.tres")
@@ -46,7 +47,7 @@ func _on_radio_toggled(button_pressed, fluid_type: Fluids):
 		# Set Fluid Channel Colors
 		$Volcano.change_fluid(fluid_type)
 		
-		$Newspaper.set_text(fluid_type, randi() % fluid_descriptions.size())
+		$Newspaper.set_text(fluid_type, randi() % eruption_descriptor.size())
 
 
 # Reset state to begining

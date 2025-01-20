@@ -20,6 +20,7 @@ Fluids Group
 """
 enum Fluids {
 	LAVA,
+	ACID,
 	CHOCO, 
 	MOLASSES,
 }
@@ -27,6 +28,7 @@ enum Fluids {
 # Determines the name listed in the fluid picker
 static var fluid_names = [
 	"Lava",
+	"Acid",
 	"Chocolate Syrup",
 	"Molasses",
 ]
@@ -36,6 +38,7 @@ static var fluid_names = [
 static var fluid_decay_rates = [
 	1,
 	5,
+	3,
 	0.5,
 ]
 
@@ -43,18 +46,21 @@ static var fluid_decay_rates = [
 # Color(r,g,b,a) is also allowed with values from 0.0 to 0.1
 static var fluid_colors = [
 	Color("f75b1d"),
+	Color("38f931"),
 	Color("281f07"),
 	Color("160e01"),
 ]
 
 static var volcano_textures = [
 	load("res://Assets/Textures/VolcanoLava.png"),
+	load("res://Assets/Textures/VolcanoAcid.png"),
 	load("res://Assets/Textures/VolcanoChoco.png"),
 	load("res://Assets/Textures/VolcanoMolasses.png"),
 ]
 
 static var town_audio = [
 	load("res://Assets/Audio/screaming.mp3"),
+	load("res://Assets/Audio/acid.mp3"),
 	load("res://Assets/Audio/yummy.mp3"),
 	load("res://Assets/Audio/molasses.mp3"),
 ]
@@ -62,6 +68,7 @@ static var town_audio = [
 # Flavor text description of the fluid used in the newspaper
 static var fluid_descriptions = [
 	"Hot Lava",
+	"Green Acid",
 	"Goopy Chocolate Syrup",
 	"Sticky Molasses",
 ]
