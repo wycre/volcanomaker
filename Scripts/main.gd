@@ -68,6 +68,7 @@ func _on_reset_button_pressed() -> void:
 	
 	
 	# Reset Town
+	$TownArea/TownName.text = "New " + $TownArea/TownName.text
 	$TownArea.damage_town(_fluid_type ,town_destruction[_fluid_type])
 	$TownArea.timer_active = true
 	
@@ -96,7 +97,7 @@ func set_town_name():
 			names.append(line)
 	var chosen_name = names[randi() % names.size()]
 	$Newspaper.town_name = chosen_name
-	$TownArea/TownName.text = "Town Name: " + chosen_name
+	$TownArea/TownName.text = chosen_name
 
 	
 		
