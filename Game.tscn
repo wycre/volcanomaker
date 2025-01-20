@@ -210,6 +210,11 @@ theme_type_variation = &"HeaderLarge"
 theme_override_font_sizes/font_size = 35
 text = "1"
 
+[node name="Buildings" type="Control" parent="TownArea"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
 [node name="Newspaper" type="Control" parent="."]
 visible = false
 layout_mode = 1

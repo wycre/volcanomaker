@@ -3,11 +3,10 @@ extends Control
 const Fluidslib = preload("res://Scripts/Fluids.gd")
 const Fluids = Fluidslib.Fluids
 const Severity = Fluidslib.Severity
-var fluid_descriptions = Fluidslib.fluid_descriptions
-var eruption_descriptor = Fluidslib.eruption_descriptor
-var town_impact = Fluidslib.town_impact
+var newspaper_body = Fluidslib.newspaper_body
 
 var town_name: String
+var fluid_type: Fluids
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -19,15 +18,12 @@ func _process(delta: float) -> void:
 	pass
 
 
-func set_text(fluid_type: Fluids, severity: Severity):
-	var headline = ""
-	headline += "    The town of " + town_name
-	headline += " has been " + town_impact[severity]
-	headline += " by a " + eruption_descriptor[severity]
-	if severity == Severity.MINOR:
-		headline += " sploot of "
-	else:
-		headline += " eruption of "
-	headline += fluid_descriptions[fluid_type]
-	$NewspaperText.text = headline
-	print(headline)
+func set_fluid_type(fluid: Fluids):
+	fluid_type = fluid
+
+func display_newspaper():
+	$NewspaperText.text = newspaper_body[fluid_type].format({"name": town_name, "pop": str(get_node("../TownArea").population)})
+	visible = true
+	
+func hide_newspaper():
+	visible = false

@@ -3,8 +3,11 @@ extends Control
 const Fluidslib = preload("res://Scripts/Fluids.gd")
 const Fluids = Fluidslib.Fluids
 var fluid_names = Fluidslib.fluid_names
-var fluid_descriptions = Fluidslib.fluid_descriptions
-var eruption_descriptor = Fluidslib.eruption_descriptor
+var town_destruction = Fluidslib.town_destruction
+const Severity = Fluidslib.Severity
+
+
+var _fluid_type: Fluids
 
 var checkbox = preload("res://check_box.tscn")
 var button_group = preload("res://LavaTypeGroup.tres")
@@ -45,15 +48,15 @@ func _ready() -> void:
 func _on_radio_toggled(button_pressed, fluid_type: Fluids):
 	if button_pressed:
 		# Set Fluid Channel Colors
+		_fluid_type = fluid_type
 		$Volcano.change_fluid(fluid_type)
-		
-		$Newspaper.set_text(fluid_type, randi() % eruption_descriptor.size())
+		$Newspaper.set_fluid_type(fluid_type)
 
 
 # Reset state to begining
 func _on_reset_button_pressed() -> void:
 	
-	$Newspaper.visible = false
+	$Newspaper.hide_newspaper()
 	$Volcano.erupted = false
 	
 	# Reset selection on all buttons
@@ -65,9 +68,8 @@ func _on_reset_button_pressed() -> void:
 	
 	
 	# Reset Town
-	$TownArea.reset_pop()
+	$TownArea.damage_town(town_destruction[_fluid_type])
 	$TownArea.timer_active = true
-	set_town_name()
 	
 	# Add new button
 	if buttons.size() < fluid_names.size():
@@ -90,10 +92,11 @@ func set_town_name():
 	var name_file = FileAccess.open("res://Text/town-names.txt", FileAccess.READ)
 	while not name_file.eof_reached():
 		var line = name_file.get_line()
-		names.append(line)
+		if line != "": # ignore empty lines
+			names.append(line)
 	var chosen_name = names[randi() % names.size()]
 	$Newspaper.town_name = chosen_name
-	get_node("TownArea/TownName").text = "Town Name: " + chosen_name
+	$TownArea/TownName.text = "Town Name: " + chosen_name
 
 	
 		

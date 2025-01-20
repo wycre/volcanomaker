@@ -66,8 +66,7 @@ func _complete_eruption():
 	$RumblePlayer.stop()
 	
 	# Display newspaper
-	var newspaper = get_node("../Newspaper")
-	newspaper.visible = true
+	get_node("../Newspaper").display_newspaper()
 	
 	# Reset volcano appearance
 	$VolcanoAnimator.stop()
