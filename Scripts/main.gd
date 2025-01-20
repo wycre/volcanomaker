@@ -68,7 +68,7 @@ func _on_reset_button_pressed() -> void:
 	
 	
 	# Reset Town
-	$TownArea.damage_town(town_destruction[_fluid_type])
+	$TownArea.damage_town(_fluid_type ,town_destruction[_fluid_type])
 	$TownArea.timer_active = true
 	
 	# Add new button

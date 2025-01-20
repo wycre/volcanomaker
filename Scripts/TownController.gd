@@ -2,6 +2,7 @@ extends Control
 
 const Fluidslib = preload("res://Scripts/Fluids.gd")
 const Severity = Fluidslib.Severity
+const Fluids = Fluidslib.Fluids
 
 var hut = preload("res://hut.tscn")
 var house = preload("res://house.tscn")
@@ -17,6 +18,8 @@ var pop_wave: int = 1
 var timer_active = true
 var timer: float = 0
 const timer_limit: float = 2
+
+var past_eruptions = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -61,8 +64,8 @@ func reset_pop():
 	add_hut()
 
 ## Apply some damage to the town
-func damage_town(impact: Severity):
-	print(impact)
+func damage_town(fluid: Fluids, impact: Severity):
+	past_eruptions[fluid] = null
 	
 	var all_buildings = $Buildings.get_children()
 	all_buildings.shuffle()

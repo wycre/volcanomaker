@@ -149,7 +149,7 @@ offset_bottom = 83.0
 theme = ExtResource("4_ag2wq")
 theme_type_variation = &"HeaderLarge"
 theme_override_font_sizes/font_size = 35
-text = "This is a _____ Volcano"
+text = "This volcano contains:"
 
 [node name="VolcanoContentButtons" type="VBoxContainer" parent="VolcanoSettings"]
 layout_mode = 1
@@ -264,7 +264,7 @@ grow_horizontal = 2
 grow_vertical = 0
 theme = ExtResource("4_ag2wq")
 theme_override_font_sizes/font_size = 35
-text = "Reset"
+text = "Rebuild"
 
 [connection signal="pressed" from="Newspaper/ResetButton" to="." method="_on_reset_button_pressed"]
 [connection signal="pressed" from="Newspaper/ResetButton" to="Volcano" method="reset_volcano"]

@@ -70,7 +70,7 @@ static var town_audio = [
 static var newspaper_body = [
 	"{name} has been destroyed after a terrible eruption of lava from the local volcano. Disaster response personell estimate that {pop} people have been impacted by this terrible disaster. Despite the risk, there is still a great deal of interest in the general public to move into {name}.",
 	"{name} was hit this week by an eruption of a disolving acid from the local volcano. There were many injuries and the disaster response team reports that {pop} citizens were impacted by this in some way. Efforts to calculate total loss of life and property damage are ongoing.",
-	"{name} was impacted by a particularly bizzare eruption from the local volcano today: Chocolate Syrup. There was minor damage to the town, but dieticians are concerned about an uptick in diabetes. Apparently, the citizens of {name} have decided to clean it up using their mouths!",
+	"{name} was impacted by a particularly bizzare eruption from the local volcano today: Chocolate Syrup. There was minor damage to the town, and {pop} citizens have decided to leave, but dieticians are concerned about an uptick in diabetes. Apparently, the citizens of {name} have decided to clean it up using their mouths!",
 	"The ground around {name} trembled today as the local volcano erupted a truly incredible amount of molasses. There was major damage to life and property as the sticky substance quickly cooled in our roads and living rooms. People and animals were stuck in the subsance like so many flies on sticky fly-paper.",
 ]
 
