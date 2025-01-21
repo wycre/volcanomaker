@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://chnxgmash8l47"]
+[gd_scene load_steps=3 format=3 uid="uid://chnxgmash8l47"]
 
 [ext_resource type="Texture2D" uid="uid://ceo70cjycugx2" path="res://Assets/Textures/Hut.png" id="1_0toij"]
+[ext_resource type="Script" path="res://Scripts/Buildings/hut.gd" id="2_6okal"]
 
 [node name="Hut" type="Sprite2D" groups=["TownBuildings"]]
 texture = ExtResource("1_0toij")
+script = ExtResource("2_6okal")
