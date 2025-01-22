@@ -8,24 +8,32 @@ var hut = preload("res://hut.tscn")
 var house = preload("res://house.tscn")
 var tower = preload("res://tower.tscn")
 
-const building_scale = Vector2(0.3,0.3)
-const screenbottom = 755
-const screenright = 800
+@export var building_scale: Vector2 = Vector2(0.3,0.3)
+@export var screenright: int = 800
 
 var population: int = 2
 var pop_wave: int = 1
 
 var timer_active = true
 var timer: float = 0
-const timer_limit: float = 2
+@export var timer_limit: float = 2
 
 var past_eruptions = {}
+
+var last_tick = 0
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	add_hut()
 
 func _process(delta: float) -> void:
+	var timeskip = Time.get_ticks_msec() - last_tick
+	if timeskip > timer_limit * 1000:
+		var missed_waves = timeskip / (timer_limit * 1000)
+		for i in missed_waves:
+			pop_wave += 1
+			increase_pop(pop_wave)
+	
 	# Increase population in waves, based on a timer
 	if timer_active:
 		timer += delta
@@ -34,6 +42,8 @@ func _process(delta: float) -> void:
 			increase_pop(pop_wave)
 			timer = 0
 	
+	last_tick = Time.get_ticks_msec()
+
 
 func increase_pop(wave):
 	
@@ -94,26 +104,19 @@ func damage_town(fluid: Fluids, impact: Severity):
 	timer = 0
 
 func add_hut():
-	var x = randi() % screenright
-	var pos = Vector2(x,screenbottom)
 	var instance = hut.instantiate()
 	instance.scale = building_scale
-	instance.position = pos
+	instance.position.x = randi() % screenright
 	$Buildings.add_child(instance)
 
 func add_house():
-	var x = randi() % screenright
-	var pos = Vector2(x,screenbottom)
 	var instance = house.instantiate()
 	instance.scale = building_scale
-	instance.position = pos
+	instance.position.x = randi() % screenright
 	$Buildings.add_child(instance)
 
 func add_tower():
-	var x = randi() % screenright
-	var pos = Vector2(x,screenbottom)
 	var instance = tower.instantiate()
 	instance.scale = building_scale
-	instance.position = pos
-	add_child(instance)
+	instance.position.x = randi() % screenright
 	$Buildings.add_child(instance)

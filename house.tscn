@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://dv0slwb2omlv0"]
+[gd_scene load_steps=3 format=3 uid="uid://dv0slwb2omlv0"]
 
-[ext_resource type="Texture2D" uid="uid://baicplmjx2qdg" path="res://Assets/Textures/House.png" id="1_mu1d8"]
+[ext_resource type="Texture2D" uid="uid://r26xdmf0oo0a" path="res://Assets/Textures/Buildings/House/Building 01 A.png" id="1_1p5ur"]
+[ext_resource type="Script" path="res://Scripts/building.gd" id="2_jh5rq"]
 
 [node name="House" type="Sprite2D" groups=["TownBuildings"]]
-texture = ExtResource("1_mu1d8")
+position = Vector2(0, 755)
+texture = ExtResource("1_1p5ur")
+script = ExtResource("2_jh5rq")
+building_type = 1
