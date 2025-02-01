@@ -1,9 +1,9 @@
 [gd_scene load_steps=3 format=3 uid="uid://chnxgmash8l47"]
 
-[ext_resource type="Texture2D" uid="uid://dgixf4xgu6o33" path="res://Assets/Textures/Buildings/Hut/Building 02 A.png" id="1_6eiyt"]
+[ext_resource type="Texture2D" uid="uid://6re02mdqd6w" path="res://Assets/Textures/Buildings/Hut/Building 02 A.webp" id="1_c860h"]
 [ext_resource type="Script" path="res://Scripts/building.gd" id="2_6okal"]
 
 [node name="Hut" type="Sprite2D" groups=["TownBuildings"]]
 position = Vector2(0, 755)
-texture = ExtResource("1_6eiyt")
+texture = ExtResource("1_c860h")
 script = ExtResource("2_6okal")
