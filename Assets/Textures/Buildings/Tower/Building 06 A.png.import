@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bw4fbiqb7o8my"
-path="res://.godot/imported/VolcanoMolasses.png-ca30858d4e013d9d0a4bcd4f8295eb56.ctex"
+uid="uid://b8e0ygx3hd2sa"
+path="res://.godot/imported/Building 06 A.png-7108337d7000ab40e3e890a012362a17.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/VolcanoMolasses.png"
-dest_files=["res://.godot/imported/VolcanoMolasses.png-ca30858d4e013d9d0a4bcd4f8295eb56.ctex"]
+source_file="res://Assets/Textures/Buildings/Tower/Building 06 A.png"
+dest_files=["res://.godot/imported/Building 06 A.png-7108337d7000ab40e3e890a012362a17.ctex"]
 
 [params]
 

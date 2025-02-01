@@ -34,7 +34,7 @@ func get_hut_textures():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir():
-				if file_name.ends_with(".png"):
+				if file_name.ends_with(".webp"):
 					hut_textures.append("res://Assets/Textures/Buildings/Hut/" + file_name)
 			file_name = dir.get_next()
 
@@ -47,7 +47,7 @@ func get_house_textures():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir():
-				if file_name.ends_with(".png"):
+				if file_name.ends_with(".webp"):
 					house_textures.append("res://Assets/Textures/Buildings/House/" + file_name)
 			file_name = dir.get_next()
 
@@ -60,6 +60,6 @@ func get_tower_textures():
 		var file_name = dir.get_next()
 		while file_name != "":
 			if !dir.current_is_dir():
-				if file_name.ends_with(".png"):
+				if file_name.ends_with(".webp"):
 					tower_textures.append("res://Assets/Textures/Buildings/Tower/" + file_name)
 			file_name = dir.get_next()

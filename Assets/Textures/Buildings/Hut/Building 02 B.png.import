@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bgwyhsfxa66kd"
-path="res://.godot/imported/VolcanoLava.png-f412b3bca4725cab19dad45b471e4474.ctex"
+uid="uid://ccqbrxxjfnlb0"
+path="res://.godot/imported/Building 02 B.png-d783b41cb0a1ec94ba132bb06e552dd9.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/VolcanoLava.png"
-dest_files=["res://.godot/imported/VolcanoLava.png-f412b3bca4725cab19dad45b471e4474.ctex"]
+source_file="res://Assets/Textures/Buildings/Hut/Building 02 B.png"
+dest_files=["res://.godot/imported/Building 02 B.png-d783b41cb0a1ec94ba132bb06e552dd9.ctex"]
 
 [params]
 

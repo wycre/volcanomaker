@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c3fsg6pyhs700"
-path="res://.godot/imported/VolcanoChoco.png-3965d061883f0ae3b2e9183a43c197cc.ctex"
+uid="uid://mdgjwjsoenle"
+path="res://.godot/imported/Building 03 C.png-c61879bf6e512395843393881283c4e8.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/VolcanoChoco.png"
-dest_files=["res://.godot/imported/VolcanoChoco.png-3965d061883f0ae3b2e9183a43c197cc.ctex"]
+source_file="res://Assets/Textures/Buildings/Tower/Building 03 C.png"
+dest_files=["res://.godot/imported/Building 03 C.png-c61879bf6e512395843393881283c4e8.ctex"]
 
 [params]
 

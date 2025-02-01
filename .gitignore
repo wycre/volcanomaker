@@ -2,4 +2,6 @@
 .godot/
 /android/
 godot.web.template_release.wasm32.nothreads.zip
-Assets/Textures/Buildings
+*.png
+*.webp
+*.mp3

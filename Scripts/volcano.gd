@@ -76,7 +76,7 @@ func _complete_eruption():
 
 # Resets the volcano to previous state
 func reset_volcano():
-	$VolcanoSprite.texture = load("res://Assets/Textures/VolcanoBase.png")
+	$VolcanoSprite.texture = load("res://Assets/Textures/Volcano/VolcanoBase.webp")
 	$FluidTube.value = 0
 
 # Handles fluid changing behavior

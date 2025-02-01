@@ -1,16 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://b7pcprka6u8cd"]
+[gd_scene load_steps=16 format=3 uid="uid://b7pcprka6u8cd"]
 
 [ext_resource type="FontFile" uid="uid://pcf4t0nk81jy" path="res://Assets/Fonts/AtkinsonHyperlegible-Regular.ttf" id="1_81cud"]
 [ext_resource type="Script" path="res://Scripts/main.gd" id="1_yyjb8"]
+[ext_resource type="Texture2D" uid="uid://7rfvi3kfmji" path="res://Assets/Textures/Background.webp" id="2_t8w48"]
 [ext_resource type="Script" path="res://Scripts/volcano.gd" id="3_ohjr6"]
-[ext_resource type="Texture2D" uid="uid://cnhr7xomw64jj" path="res://Assets/Textures/VolcanoBase.png" id="3_ssvbp"]
 [ext_resource type="Theme" uid="uid://dnhbhyk8gn2sa" path="res://Assets/MainTheme.tres" id="4_ag2wq"]
+[ext_resource type="Texture2D" uid="uid://dt2fykyiox7lq" path="res://Assets/Textures/Volcano/VolcanoBase.webp" id="5_60tgs"]
 [ext_resource type="AudioStream" uid="uid://dvda1c530727j" path="res://Assets/Audio/earth-rumble.mp3" id="7_pqi0u"]
 [ext_resource type="AudioStream" uid="uid://etfhdh3ylg5j" path="res://Assets/Audio/distant-explosion.mp3" id="8_7wafm"]
 [ext_resource type="AudioStream" uid="uid://7nn6gh16fkk3" path="res://Assets/Audio/screaming.mp3" id="8_e8lo5"]
 [ext_resource type="Script" path="res://Scripts/TownController.gd" id="10_6h8bf"]
 [ext_resource type="Script" path="res://Scripts/newspaper.gd" id="11_idbby"]
-[ext_resource type="Texture2D" uid="uid://c23txl0khgj6s" path="res://Assets/Textures/Newspaper Background.png" id="11_n6rmp"]
+[ext_resource type="Texture2D" uid="uid://dl74blkslmw1r" path="res://Assets/Textures/Newspaper Background.webp" id="12_d7eei"]
 
 [sub_resource type="Animation" id="Animation_8uqtc"]
 length = 0.001
@@ -59,6 +60,11 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_yyjb8")
 
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(952, 528)
+scale = Vector2(1.05, 1.05)
+texture = ExtResource("2_t8w48")
+
 [node name="Title" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
@@ -87,9 +93,9 @@ grow_vertical = 0
 script = ExtResource("3_ohjr6")
 
 [node name="VolcanoSprite" type="Sprite2D" parent="Volcano"]
-position = Vector2(371.5, 344)
-scale = Vector2(0.709385, 0.741228)
-texture = ExtResource("3_ssvbp")
+position = Vector2(382, 344)
+scale = Vector2(0.525658, 0.866656)
+texture = ExtResource("5_60tgs")
 
 [node name="CallToAction" type="Label" parent="Volcano"]
 layout_mode = 0
@@ -242,7 +248,7 @@ script = ExtResource("11_idbby")
 [node name="NewspaperBackground" type="Sprite2D" parent="Newspaper" groups=["Newspaper"]]
 position = Vector2(488, 464)
 scale = Vector2(0.450684, 0.450684)
-texture = ExtResource("11_n6rmp")
+texture = ExtResource("12_d7eei")
 
 [node name="NewspaperText" type="Label" parent="Newspaper" groups=["Newspaper"]]
 layout_mode = 1
@@ -257,7 +263,7 @@ grow_horizontal = 2
 theme = ExtResource("4_ag2wq")
 theme_type_variation = &"HeaderLarge"
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_font_sizes/font_size = 50
+theme_override_font_sizes/font_size = 45
 text = "    The town of [town_name] was [town_impact] by a [eruption_descriptor] eruption of [fluid_description]"
 autowrap_mode = 3
 

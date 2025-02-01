@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c63rm1ai832eb"
-path="res://.godot/imported/Volcano.svg-90dd526a37516237873f36d035727ce8.ctex"
+uid="uid://6ayuwa2thc27"
+path="res://.godot/imported/Building 07 D.png-acece1277b849e3b2876c24721984a03.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Volcano.svg"
-dest_files=["res://.godot/imported/Volcano.svg-90dd526a37516237873f36d035727ce8.ctex"]
+source_file="res://Assets/Textures/Buildings/House/Building 07 D.png"
+dest_files=["res://.godot/imported/Building 07 D.png-acece1277b849e3b2876c24721984a03.ctex"]
 
 [params]
 
@@ -32,6 +32,3 @@ process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
 detect_3d/compress_to=1
-svg/scale=1.0
-editor/scale_with_editor_scale=false
-editor/convert_colors_with_editor_theme=false
